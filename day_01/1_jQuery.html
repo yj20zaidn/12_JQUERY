@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+<script
+src="https://code.jquery.com/jquery-1.12.4.js"></script>
+</head>
+<body>
+<h1>jQuery/$工厂函数</h1>
+<button id="btn1" class="btn btn-success">click me(0)</button>
+<!-- <script src="js/jquery-1.11.3.js"></script> -->
+<script>
+//DOM 4步
+//1. 查找触发事件的元素
+//本例中: 查找id为btn1的按钮
+//var btn1=document.getElementById("btn1");
+var $btn1=$("#btn1");
+//2. 绑定事件处理函数
+//btn1.onclick=function(){
+$btn1.click(function(){
+  //3. 查找要修改的元素
+  //本例中: 就是要改自己的内容(this)
+  var $btn=$(this);
+  //4. 修改元素
+  //4.1 先取出按钮的内容中的数字，转为整数
+  var n=parseInt(//parseInt天生不但可以转为整数，而且还可自动去掉数字后非数字字符！
+    //this.innerHTML //"click me(0)"
+    $btn.html()      // 01234567890 
+        .slice(9)    //          ||
+  )    //想要0
+  //4.2 将数字+1
+  n++
+  //4.3 将新数字放回按钮中
+  //this.innerHTML=`click me(${n})`;
+  $btn.html(`click me(${n})`)
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>根据页面滚动位置显示浮动框</title>
+<style>
+  body{height:2000px;}
+  #toTop{
+    position:fixed;
+    bottom:100px;
+    right:0;
+    display:none;
+  }
+</style>
+
+</head>
+<body>
+<div id="toTop">
+  <a href="#">返回顶部</a>
+</div>
+<script>
+window.onscroll=function(){
+  var scrollTop=document.documentElement.scrollTop
+                ||document.body.scrollTop;
+  console.log(scrollTop);
+  var div=document.getElementById("toTop");
+//当页面滚动过的距离>=500时就让div#toTop显示出来
+  if(scrollTop>=500){
+    div.style.display="block";
+  }else{//否则如果页面滚动过的距离<500时就让div#toTop隐藏起来
+    div.style.display="none";
+  }
+}
+//单击a返回顶部
+var a=document.querySelector("#toTop>a");
+a.onclick=function(e){
+  e.preventDefault();
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>

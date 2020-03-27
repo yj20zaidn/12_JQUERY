@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+<h1>jQueryAPI特点</h1>
+<button id="btn1">click me(0)</button>
+<button id="btn2">click me(0)</button>
+<button id="btn3">click me(0)</button>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+//为三个按钮绑定单击事件，记录单击次数
+//查找到三个button
+var $btns=$("button");
+console.log($btns);
+//为每个按钮绑定单击事件
+//DOM中: 
+// for(var btn of $btns){
+//   btn.onclick=function(){
+//     //... ...
+//   }
+// }
+//jq中: 
+$btns.click(function(){
+  //alert("疼!")
+  //3. 查找要修改的元素
+  //本例中: 就是要改自己的内容(this)
+  var $btn=$(this);
+  //4. 修改元素
+  //4.1 先取出按钮的内容中的数字，转为整数
+  var n=parseInt(
+  //获取按钮的内容
+    $btn.html().slice(9)
+  )
+  //4.2 将数字+1
+  n++
+  //4.3 将新数字放回按钮中
+  //this.innerHTML=`click me(${n})`;
+  //修改按钮的内容
+  $btn.html(`click me(${n})`)
+})
+</script>
+</body>
+</html>

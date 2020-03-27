@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>在当前显示区范围内实现点不到的小方块</title>
+<style>
+div{
+	position:fixed;
+	top:150px;
+	left:150px;
+	width:200px;
+	height:200px;
+	background-image:url(images/xiaoxin.gif);
+	background-size:100%;
+}
+</style>
+
+</head>
+<body>
+<div id="pop"></div>
+<script>
+var pop=document.getElementById("pop");
+pop.onclick=function(e){
+	alert(`
+	距离屏幕左上角: e.screenX:${e.screenX}, e.screenY:${e.screenY}
+	距离文档显示区左上角: e.clientX:${e.clientX}, e.clientY:${e.clientY}
+	距离当前元素左上角: e.offsetX:${e.offsetX},e.offsetY:${e.offsetY}
+	`)
+}
+</script>
+</body>
+</html>
