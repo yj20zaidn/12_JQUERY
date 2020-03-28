@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>.....</title>
+<meta charset="utf-8"/>
+<style>
+</style>
+</head>
+<body>
+<form>
+	用户名:<input disabled></br>
+	密码:<input type="password" disabled></br>
+	<input type="checkbox">我同意本站的使用条款<br>
+	<input type="submit" value="提交注册信息" disabled/>
+</form>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+//DOM 4步
+//1. 查找触发事件的元素
+//本例中: 查找type="checkbox"的元素
+$(":checkbox")
+//2. 绑定事件处理函数
+.click(function(){
+	//3. 查找要修改的元素
+	//本例中: 查找除checkbox之外的所有其余表单元素
+	var $others=$(":input:not(:checkbox)")
+	//4. 修改元素
+	//如果当前chb选中，则其他元素启用
+	//         获取checked属性值
+	// if($(this).prop("checked")==true){
+	// 	$others.prop("disabled",false)
+	// 			// .disabled=false
+	// }else{//否则如果当前chb选中，则其他元素禁用
+	// 	$others.prop("disabled",true)
+	// }
+	//基础好的同学: 上边这个if else，写成一句话！
+	$others.prop("disabled",!$(this).prop("checked"))
+})
+</script>
+</body>
+</html>

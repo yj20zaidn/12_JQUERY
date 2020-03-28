@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> new document </title>
+<meta charset="utf-8">
+</head>
+<body>
+<h1>操作元素的属性</h1>
+<img src="img/1.jpg" alt="1">
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+//单击图片，切换下一张
+//DOM 4步
+//1. 查找触发事件的元素
+//本例中: 查找img元素
+$("img")
+//2. 绑定事件处理函数
+.click(function(){
+	//3. 查找要修改的元素
+	var $img=$(this);
+	//4. 修改元素
+	//取出当前img的alt属性值，转为整数
+	var n=parseInt($img.attr("alt"))
+									// .prop("alt")
+	//如果alt值<4，就+1
+	//否则如果alt值==4了，就将alt值恢复成1
+	n<4?(n+=1):(n=1);
+	//再将alt值放回src属性和alt属性中
+	// $img.attr("src",`img/${n}.jpg`);
+	// $img.attr("alt",n);
+	$img.attr({//.prop({
+		src:`img/${n}.jpg`,
+		alt:n
+	})
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> new document </title>
+<meta charset="utf-8">
+<style>
+	.container {
+		border: 1px solid #aaa;  overflow:hidden;
+	}
+	.block {
+		float: left; margin: 10px;
+		border: 1px solid #aaa;
+		background: #faa;
+		width: 150px; height: 150px;
+	}
+	.block:hover{ box-shadow:0 5px 6px #000; }
+	.close {
+		float:right; padding:5px;
+		font-weight:bold; opacity:.2; cursor: pointer;
+	}
+	.close:hover { opacity: .5; }
+</style>
+</head>
+<body>
+<h1>添加/删除节点</h1>
+<button id="add-block">添加区块</button>
+<div class="container">
+	<!-- <div class="block">
+		<span class="close">×</span>
+	</div> -->
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+//DOM 4步
+//1. 查找触发事件的元素
+//本例中: 查找id为add-block的按钮
+$("#add-block")
+//2. 绑定事件处理函数
+.click(function(){
+	//3. 查找要修改的元素
+	//本例中: 查找class为container的div
+	var $div=$(".container")
+	//4. 修改元素
+	//先创建一个新块div
+	var $block=$(`<div class="block">
+		<span class="close">×</span>
+	</div>`);
+	//将新div追加到$div中
+	//$block.appendTo($div) //return $block
+	$block.prependTo($div)
+				.css("background-color",`rgb(${
+					parseInt(Math.random()*256)
+				},${
+					parseInt(Math.random()*256)
+				},${
+					parseInt(Math.random()*256)
+				})`);
+})
+
+//点x删除方块: 
+//DOM 4步
+//1. 查找触发事件的元素
+//本例中: 多个×都要点击，所以应该用事件委托优化！事件应该只绑定在父元素上一份即可
+$(".container")
+//2. 绑定事件处理函数
+.click(function(e){
+	//事件委托2件事:
+	//1). 用e.target代替this //复习DOM第四天事件委托
+	var $x=$(e.target);
+	//2). 判断只允许符合条件的元素执行操作
+	//本例中: 只允许内容为×的元素触发事件
+	if($x.html().trim()=="×"){
+	//3. 查找要修改的元素
+	//本例中点×，要删除其父元素
+	$x.parent()
+	//4. 修改元素
+		.remove();
+	}
+})
+
+</script>
+</body>
+</html>

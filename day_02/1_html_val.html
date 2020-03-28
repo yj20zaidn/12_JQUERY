@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> new document </title>
+<meta charset="utf-8">
+</head>
+<body>
+<h1>操作元素的内容和值</h1>
+<form action="">
+用户名:<input type="text" name="uname">
+			<span></span><br>
+密码:<input type="password" name="upwd">
+		<span></span><br>
+<input type="submit" value="提交注册信息">
+</form>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+//正确时，使用图片:"<img src='img/ok.png'>"
+//姓名错误时: "<img src='img/err.png'>用户名必须介于3~9位之间!"
+//密码错误时: "<img src='img/err.png'>密码必须介于6~8位之间!"
+//DOM 4步
+//1. 查找触发事件的元素
+//本例中: 查找type=text的文本框
+$(":text")
+//2. 绑定事件处理函数
+.blur(function(){
+	var $input=$(this);
+	//3. 查找要修改的元素
+	//本例中: 查找当前input旁边的span
+	var $span=$input.next();
+	//获得当前文本框的内容
+	var value=$input.val().trim();
+	//4. 修改元素
+	if(value.length>=3&&value.length<=9){
+		$span.html("<img src='img/ok.png'>")
+	}else{
+		$span.html("<img src='img/err.png'>用户名必须介于3~9位之间!")
+	}
+})
+</script>
+</body>
+</html>
