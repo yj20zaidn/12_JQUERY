@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title></title>
+<style>
+</style>
+</head>
+<body>
+<input type="text"><button>百度一下</button>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+//当单击按钮时
+$("button").click(function(){
+  //获得文本框的内容并去空格
+  var kws=$(":text").val().trim();
+  if(kws!==""){//如果内容不为""
+    //就去服务器端搜索相应的结果...
+    console.log(`搜索 ${kws} 相关的内容...`);
+  }
+})
+
+//现实中很少点按钮，都是在文档框上按回车就执行查找
+//    键盘按键 按下
+// $(":text").keydown(function(e){
+//    键盘按键 抬起
+$(":text").keyup(function(e){
+  //如果按的是回车键(按键号==13)时
+  if(e.keyCode==13){
+    //找到按钮，触发按钮身上的单击事件处理函数，就可以执行和单击按钮完全相同的效果了
+    //$("button").trigger("click");
+    $("button").click();
+  }
+})
+</script>
+</body>
+</html>

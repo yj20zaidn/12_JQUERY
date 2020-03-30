@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    .score {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .score li {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      border: 1px solid #f00;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h3>请打分</h3>
+<ul class="score">
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+//DOM 4步
+//1. 查找触发事件的元素
+//本例中: 因为多个li都要触发单击事件，所以应该用事件委托优化
+//事件应该只绑定在父元素上一份即可
+$("ul.score")
+//2. 绑定事件处理函数
+//事件委托必须用on，且只允许li元素触发事件
+.on("click","li",function(){
+  //3. 查找要修改的元素
+  //4. 修改元素
+  //获得当前li
+  var $li=$(this);
+  //查找当前点击的li是ul下所有li中的第几个
+  var i=$("ul>li").index($li);
+  //alert(i);
+  //<i+1位置的元素都变为黄色
+  $(`ul>li:lt(${i+1})`).css("background-color","yellow")
+  //>i位置的元素都变为白色
+  $(`ul>li:gt(${i})`).css("background-color","#fff")
+})
+</script>
+</body>
+</html>

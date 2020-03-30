@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+    ul {
+      list-style: none;
+    }
+    li {
+      margin: 0;
+      padding: 0;
+      display: inline-block;
+      width: 30%;
+    }
+  </style>
+</head>
+<body>
+<ul id="list">
+  <li>尼康(234)</li>
+  <li>佳能(22)</li>
+  <li>索尼(932)</li>
+  <li>宾得(11)</li>
+  <li>爱国者(3234)</li>
+  <li>欧巴(32)</li>
+  <li>海鸥(2334)</li>
+  <li>卡西欧(334)</li>
+  <li>三星(834)</li>
+  <li>松下(234)</li>
+  <li>其它品牌(2343)</li>
+</ul>
+<button data-toggle="brandlist">精简显示品牌</button>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+//DOM 4步
+//1. 查找触发事件的元素
+//本例中查找data-toggle属性为brandlist的按钮
+$("[data-toggle=brandlist]")
+//2. 绑定事件处理函数
+.click(function(){
+  //3. 查找要修改的元素
+  //本例中: 查找ul下的li中大于4位置的且不是最后一个元素的所有li
+  $("ul>li:gt(4):not(:last-child)")
+  //4. 修改元素
+  //本例中: 切换显示隐藏
+  .toggle();
+  //让当前元素的内容在"精简显示品牌"和"显示所有品牌"之间来回切换
+  var $btn=$(this);
+  var text=$btn.html();
+  $btn.html(text=="显示所有品牌"?"精简显示品牌":"显示所有品牌")
+})
+</script>
+</body>
+</html>
