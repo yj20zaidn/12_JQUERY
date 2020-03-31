@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<ul>
+  <li>85</li>
+  <li>91</li>
+  <li>73</li>
+  <li>59</li>
+</ul>
+<!-- <script src="js/jquery-1.11.3.js"></script> -->
+<script src="js/jquery-3.2.1.js"></script>
+<script>
+jQuery.prototype.sum=function(){
+  var total=0;
+  //jquery-1.11.3不支持es6语法的。
+  //$("ul>li")         li
+  // this.each(function(i,li){
+  //   total+=parseInt(li.innerHTML)
+  // })
+  //jquery从3.x开始支持es6语法
+  for(var li of this){
+    total+=parseInt(li.innerHTML)
+  }
+  return total;
+}
+</script>
+<script>
+//希望
+console.log($("ul>li").sum())
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <a href="http://localhost:3000">今日天气</a>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+  $.ajax({
+    url:"http://localhost:3000",
+    type:"get",
+    success:function(result){
+      console.log(result)//希望输出北京 晴 5~21°
+    }
+  });
+  //用live server打开网页
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+  //请求学子商城首页的六个商品
+  $.ajax({
+    url:"http://xzserver.applinzi.com/index",
+    type:"get",
+    //data:{  },
+    dataType:"json",
+    success:function(result){
+      console.log(result);
+    }
+  })
+  //请求一个指定商品编号(5号)的商品的详细信息
+  $.ajax({
+    url:"http://xzserver.applinzi.com/details",
+    type:"get",
+    data:{ lid:5 },
+    dataType:"json",
+    success:function(result){
+      console.log(result);
+    }
+  })
+  //想请求登录接口验证用户名和密码
+  $.ajax({
+    url:"http://xzserver.applinzi.com/users/signin",
+    type:"post",
+    data:{uname:"dingding",upwd:"123456"},
+    dataType:"json",
+    success:function(result){
+      console.log(result);
+    }
+  })
+</script>
+</body>
+</html>
